@@ -704,7 +704,7 @@ configure_file(${LIBDIR}/platform/unix/fhs.hpp.in ${LIBDIR_BIN}/platform/unix/fh
 if (NOT WIN32)
     set(CPACK_GENERATOR "STGZ;TGZ;TZ")
     set(CPACK_NSIS_DISPLAY_NAME "${SLIC3R_APP_NAME} ${SLIC3R_VERSION}")
-    set(CPACK_OUTPUT_CONFIG_FILE "${CMAKE_SOURCE_DIR}/cmake/CPackConfig.cmake")
+    set(CPACK_OUTPUT_CONFIG_FILE "${CMAKE_BINARY_DIR}/CPackConfig.cmake")
     set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
     set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "CMake is a build tool")
     set(CPACK_PACKAGE_EXECUTABLES "${SLIC3R_APP_CMD}")
@@ -729,4 +729,3 @@ if (NOT WIN32)
 endif()
 
 include(CPack)
-
