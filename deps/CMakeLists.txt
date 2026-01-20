@@ -23,7 +23,7 @@
 # WARNING: On UNIX platforms wxWidgets hardcode the destdir path into its `wx-conffig` utility,
 # therefore, unfortunatelly, the installation cannot be copied/moved elsewhere without re-installing wxWidgets.
 #
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.20)
 project(Slic3r-deps)
 
 # timestamp of the extracted content from archive set to the extraction date. OLD to set to the timestamp from the archive.
@@ -96,7 +96,10 @@ if (MSVC)
     dep_message(FATAL_ERROR "Unable to detect architecture!")
     endif ()
 else ()
-    set(DEP_CMAKE_OPTS "-DCMAKE_POSITION_INDEPENDENT_CODE=ON")
+    set(DEP_CMAKE_OPTS
+        "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+    )
 endif ()
 
 if (APPLE)
@@ -122,6 +125,7 @@ if (APPLE)
     
     set(DEP_CMAKE_OPTS
         "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
         "-DCMAKE_OSX_SYSROOT=${CMAKE_OSX_SYSROOT}"
         "-DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}"
         "-DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}"
